@@ -368,7 +368,19 @@ public class BackgroundModeExt extends CordovaPlugin {
      */
     private void addSreenAndKeyguardFlags()
     {
-        getApp().runOnUiThread(() -> getApp().getWindow().addFlags(FLAG_ALLOW_LOCK_WHILE_SCREEN_ON | FLAG_SHOW_WHEN_LOCKED | FLAG_TURN_SCREEN_ON | FLAG_DISMISS_KEYGUARD));
+        // getApp().runOnUiThread(() -> getApp().getWindow().addFlags(FLAG_ALLOW_LOCK_WHILE_SCREEN_ON | FLAG_SHOW_WHEN_LOCKED | FLAG_TURN_SCREEN_ON | FLAG_DISMISS_KEYGUARD));
+
+        getApp().runOnUiThread(new Runnable() {
+           public void run() {
+               getApp().getWindow().addFlags(
+                       FLAG_ALLOW_LOCK_WHILE_SCREEN_ON |
+                       FLAG_SHOW_WHEN_LOCKED |
+                       FLAG_TURN_SCREEN_ON |
+                       FLAG_DISMISS_KEYGUARD
+               );
+           }
+       });
+
     }
 
     /**
@@ -376,7 +388,18 @@ public class BackgroundModeExt extends CordovaPlugin {
      */
     private void clearScreenAndKeyguardFlags()
     {
-        getApp().runOnUiThread(() -> getApp().getWindow().clearFlags(FLAG_ALLOW_LOCK_WHILE_SCREEN_ON | FLAG_SHOW_WHEN_LOCKED | FLAG_TURN_SCREEN_ON | FLAG_DISMISS_KEYGUARD));
+        // getApp().runOnUiThread(() -> getApp().getWindow().clearFlags(FLAG_ALLOW_LOCK_WHILE_SCREEN_ON | FLAG_SHOW_WHEN_LOCKED | FLAG_TURN_SCREEN_ON | FLAG_DISMISS_KEYGUARD));
+
+        getApp().runOnUiThread(new Runnable() {
+           public void run() {
+               getApp().getWindow().clearFlags(
+                       FLAG_ALLOW_LOCK_WHILE_SCREEN_ON |
+                       FLAG_SHOW_WHEN_LOCKED |
+                       FLAG_TURN_SCREEN_ON |
+                       FLAG_DISMISS_KEYGUARD
+               );
+           }
+       });
     }
 
     /**
@@ -384,7 +407,14 @@ public class BackgroundModeExt extends CordovaPlugin {
      */
     static void clearKeyguardFlags (Activity app)
     {
-        app.runOnUiThread(() -> app.getWindow().clearFlags(FLAG_DISMISS_KEYGUARD));
+        // app.runOnUiThread(() -> app.getWindow().clearFlags(FLAG_DISMISS_KEYGUARD));
+
+        app.runOnUiThread(new Runnable() {
+           public void run() {
+               app.getWindow().clearFlags(FLAG_DISMISS_KEYGUARD);
+           }
+       });
+
     }
 
     /**
