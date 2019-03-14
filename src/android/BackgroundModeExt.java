@@ -221,7 +221,7 @@ public class BackgroundModeExt extends CordovaPlugin {
      */
     private void openAppStart (Object arg)
     {
-        Activity activity = cordova.getActivity();
+        final Activity activity = cordova.getActivity();
         PackageManager pm = activity.getPackageManager();
 
         for (Intent intent : getAppStartIntents())
@@ -245,7 +245,7 @@ public class BackgroundModeExt extends CordovaPlugin {
                      activity.startActivity(intent);
                    }
                 });
-                dialog.setNegativeButton(cancel,, new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton(cancel, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id)  {
 
                    }
