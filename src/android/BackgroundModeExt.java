@@ -165,7 +165,8 @@ public class BackgroundModeExt extends CordovaPlugin {
             public void run() {
                 try {
                     Thread.sleep(1000);
-                    getApp().runOnUiThread(() -> {
+
+                    getApp().runOnUiThread(new Runnable() {
                         View view = webView.getEngine().getView();
 
                         try {
@@ -254,7 +255,9 @@ public class BackgroundModeExt extends CordovaPlugin {
                     dialog.setMessage("missing text");
                 }
 
-                activity.runOnUiThread(dialog::show);
+                activity.runOnUiThread(new Runnable() {
+                  dialog.show();
+                });
 
                 break;
             }
