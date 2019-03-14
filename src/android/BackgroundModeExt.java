@@ -167,6 +167,7 @@ public class BackgroundModeExt extends CordovaPlugin {
                     Thread.sleep(1000);
 
                     getApp().runOnUiThread(new Runnable() {
+                      public void run() {
                         View view = webView.getEngine().getView();
 
                         try {
@@ -176,6 +177,7 @@ public class BackgroundModeExt extends CordovaPlugin {
                         } catch (Exception e){
                             view.dispatchWindowVisibilityChanged(View.VISIBLE);
                         }
+                      }
                     });
                 } catch (InterruptedException e) {
                     // do nothing
@@ -256,7 +258,9 @@ public class BackgroundModeExt extends CordovaPlugin {
                 }
 
                 activity.runOnUiThread(new Runnable() {
-                  dialog.show();
+                  public void run() {
+                    dialog.show();
+                  }
                 });
 
                 break;

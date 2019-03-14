@@ -293,7 +293,9 @@ public class BackgroundMode extends CordovaPlugin {
         final String js = str;
 
         cordova.getActivity().runOnUiThread(new Runnable() {
-           webView.loadUrl("javascript:" + js);
+          public void run() {
+              webView.loadUrl("javascript:" + js);
+          }
         });
     }
 }
