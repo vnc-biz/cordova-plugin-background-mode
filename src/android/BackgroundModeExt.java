@@ -35,6 +35,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
 import android.view.View;
+import android.content.DialogInterface;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -239,8 +240,16 @@ public class BackgroundModeExt extends CordovaPlugin {
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(activity, Theme_DeviceDefault_Light_Dialog);
 
-                dialog.setPositiveButton(ok, (o, d) -> activity.startActivity(intent));
-                dialog.setNegativeButton(cancel, (o, d) -> {});
+                dialog.setPositiveButton(ok, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id)  {
+                     activity.startActivity(intent);
+                   }
+                });
+                dialog.setNegativeButton(cancel,, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id)  {
+
+                   }
+                });
                 dialog.setCancelable(true);
 
                 if (spec != null && spec.has("title"))
