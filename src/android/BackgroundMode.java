@@ -79,7 +79,7 @@ public class BackgroundMode extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
-        BackgroundExt.addWindowFlags(cordova.getActivity());
+        // BackgroundExt.addWindowFlags(cordova.getActivity());
     }
 
     // codebeat:disable[ABC]
