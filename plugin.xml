@@ -34,7 +34,7 @@
     </js-module>
 
     <!-- ios -->
-    <platform name="ios">
+    <!-- <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="BackgroundMode">
                 <param name="ios-package" value="APPBackgroundMode" onload="true" />
@@ -48,7 +48,7 @@
         <source-file src="src/ios/APPBackgroundMode.m" />
         <header-file src="src/ios/APPMethodMagic.h" />
         <source-file src="src/ios/APPMethodMagic.m" />
-    </platform>
+    </platform> -->
 
     <!-- android -->
     <platform name="android">
