@@ -411,7 +411,7 @@ exports._isActive = false;
 exports._defaults =
 {
     title:   'App is running in background',
-    text:    'Doing heavy tasks.',
+    text:    'Doing heavy js tasks.',
     bigText: false,
     resume:  true,
     silent:  false,
