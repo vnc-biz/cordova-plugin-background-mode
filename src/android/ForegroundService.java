@@ -128,9 +128,11 @@ public class ForegroundService extends Service {
         JSONObject settings = BackgroundMode.getSettings();
         boolean isSilent    = settings.optBoolean("silent", false);
 
+        /* never add a notification here
         if (!isSilent) {
             startForeground(NOTIFICATION_ID, makeNotification());
         }
+        */
 
         PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
 
