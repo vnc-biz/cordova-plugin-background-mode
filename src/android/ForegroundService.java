@@ -176,9 +176,20 @@ public class ForegroundService extends Service {
         String CHANNEL_ID = "cordova-plugin-background-mode-id";
         if (Build.VERSION.SDK_INT >= 26) {
             // The user-visible name of the channel.
-            CharSequence name = settings.optString("channelName", NOTIFICATION_CHANNEL_NAME);
+            String name = settings.optString("channelName", NOTIFICATION_CHANNEL_NAME);
+
+            int nameResId = getResources().getIdentifier("background_mode_notification_channel_name", "string", getPackageName());
+            if (nameResId != 0){
+                name = getString(nameResId);
+            }
+
             // The user-visible description of the channel.
             String description = settings.optString("channelDescription", NOTIFICATION_CHANNEL_DESCRIPTION);
+
+            int descriptionResId = getResources().getIdentifier("background_mode_notification_channel_description", "string", getPackageName());
+            if (descriptionResId != 0){
+                description = getString(descriptionResId);
+            }
 
             int importance = NotificationManager.IMPORTANCE_LOW;
 
@@ -191,7 +202,19 @@ public class ForegroundService extends Service {
         }
 
         String title = settings.optString("title", NOTIFICATION_TITLE);
+
+        int titleResId = getResources().getIdentifier("background_mode_notification_title", "string", getPackageName());
+        if (titleResId != 0){
+            title = getString(titleResId);
+        }
+
         String text = settings.optString("text", NOTIFICATION_TEXT);
+
+        int textResId = getResources().getIdentifier("background_mode_notification_subtitle", "string", getPackageName());
+        if (textResId != 0){
+            title = getString(textResId);
+        }
+
         boolean bigText = settings.optBoolean("bigText", false);
 
         Context context = getApplicationContext();
@@ -222,8 +245,8 @@ public class ForegroundService extends Service {
         if (intent != null && settings.optBoolean("resume")) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent contentIntent = PendingIntent.getActivity(
-                    context, 
-                    NOTIFICATION_ID, 
+                    context,
+                    NOTIFICATION_ID,
                     intent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
 
