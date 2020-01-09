@@ -87,7 +87,6 @@
 
         <resource-file src="src/android/res/cordova-plugin-backgroundmode-strings.xml" target="res/values/cordova-plugin-backgroundmode-strings.xml" />
 		<resource-file src="src/android/res/cordova-plugin-backgroundmode-strings-de.xml" target="res/values-de/cordova-plugin-backgroundmode-strings.xml" />
-		<resource-file src="src/android/res/cordova-plugin-backgroundmode-strings-fr.xml" target="res/values-fr/cordova-plugin-backgroundmode-strings.xml" />
     </platform>
 
     <!-- windows

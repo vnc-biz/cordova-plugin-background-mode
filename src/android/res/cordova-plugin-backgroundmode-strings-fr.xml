@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="background_mode_notification_title">App is running in background</string>
-    <string name="background_mode_notification_subtitle">You have an active call</string>
-    <string name="background_mode_notification_channel_name">System</string>
-    <string name="background_mode_notification_channel_description">Notifications will be shown when the application does background work</string>
-</resources>
