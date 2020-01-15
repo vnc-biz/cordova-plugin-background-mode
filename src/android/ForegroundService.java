@@ -212,7 +212,7 @@ public class ForegroundService extends Service {
 
         int textResId = getResources().getIdentifier("background_mode_notification_subtitle", "string", getPackageName());
         if (textResId != 0){
-            title = getString(textResId);
+            text = getString(textResId);
         }
 
         boolean bigText = settings.optBoolean("bigText", false);
