@@ -84,6 +84,9 @@
         <source-file
             src="src/android/ForegroundService.java"
             target-dir="src/de/appplant/cordova/plugin/background" />
+
+        <resource-file src="src/android/res/cordova-plugin-backgroundmode-strings.xml" target="res/values/cordova-plugin-backgroundmode-strings.xml" />
+		<resource-file src="src/android/res/cordova-plugin-backgroundmode-strings-de.xml" target="res/values-de/cordova-plugin-backgroundmode-strings.xml" />
     </platform>
 
     <!-- windows
