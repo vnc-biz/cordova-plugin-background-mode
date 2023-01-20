@@ -36,6 +36,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.app.NotificationChannel;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.json.JSONObject;
 
@@ -47,6 +48,8 @@ import static android.os.PowerManager.PARTIAL_WAKE_LOCK;
  * when low on memory.
  */
 public class ForegroundService extends Service {
+
+    private static final String TAG = "CordovaForegroundService";
 
     // Fixed ID for the 'foreground' notification
     public static final int NOTIFICATION_ID = -574543954;
@@ -132,7 +135,10 @@ public class ForegroundService extends Service {
         JSONObject settings = BackgroundMode.getSettings();
         boolean isSilent = settings.optBoolean("silent", false);
 
+        Log.i(TAG, "keepAwake() called with settings " + settings.toString());
+
         if (!isSilent) {
+            Log.i(TAG, "calling startForeground in keepAwake()");
             startForeground(NOTIFICATION_ID, makeNotification());
         }
 
@@ -148,6 +154,7 @@ public class ForegroundService extends Service {
      * Stop background mode.
      */
     private void sleepWell() {
+        Log.i("cordovaBackgroundMode", "calling stopForeground() in sleepWell()");
         stopForeground(true);
         getNotificationManager().cancel(NOTIFICATION_ID);
 

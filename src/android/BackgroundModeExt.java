@@ -34,6 +34,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.content.DialogInterface;
 
@@ -96,6 +98,8 @@ public class BackgroundModeExt extends CordovaPlugin {
           moveToBackground();
         } else if (action.equals("foreground")) {
           moveToForeground();
+        } else if (action.equals("requestTopPermissions")) {
+          requestTopPermissions();
         } else if (action.equals("tasklist")) {
           excludeFromTaskList();
         } else if (action.equals("dimmed")) {
@@ -191,7 +195,9 @@ public class BackgroundModeExt extends CordovaPlugin {
                     Thread.sleep(1000);
                     getApp().runOnUiThread(new Thread(new Runnable() {
                         public void run() {
-                          View view = webView.getEngine().getView();
+                          // View view = webView.getEngine().getView();
+                          // https://bitbucket.org:TheBosZ/cordova-plugin-run-in-background.git 8d523e638e62a09a630d91878f2dbeb44a4c621e
+                          View view = webView.getView();
 
                           try {
                               Class.forName("org.crosswalk.engine.XWalkCordovaView")
@@ -234,6 +240,21 @@ public class BackgroundModeExt extends CordovaPlugin {
 
         cordova.getActivity().startActivity(intent);
     }
+
+    private void requestTopPermissions() {
+       if (SDK_INT >= M) {
+
+           Activity activity = cordova.getActivity();
+           if (Settings.canDrawOverlays(activity.getApplicationContext())) {
+               return;
+           }
+
+           String pkgName    = activity.getPackageName();
+           Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + pkgName));
+           activity.startActivity(intent);
+       }
+   }
+
 
     /**
      * Opens the system settings dialog where the user can tweak or turn off any
