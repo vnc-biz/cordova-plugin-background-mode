@@ -68,7 +68,7 @@
             <service
               android:name="de.appplant.cordova.plugin.background.ForegroundService"
               android:foregroundServiceType="dataSync"
-              android:exported="true"
+              android:exported="false"
             />
         </config-file>
 
